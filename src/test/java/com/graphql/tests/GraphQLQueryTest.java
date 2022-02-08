@@ -9,6 +9,10 @@ import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
+import java.io.IOException;
+import java.util.Locale;
+import java.util.Properties;
+
 /**
  * 
  * @author naveenautomationlabs
@@ -16,7 +20,7 @@ import io.restassured.http.ContentType;
  */
 
 public class GraphQLQueryTest {
-	
+
 	@Test
 	public void getAllFilmsTest() {
 		
@@ -34,6 +38,17 @@ public class GraphQLQueryTest {
 								.statusCode(200)
 									.and()
 										.body("data.allFilms.films[0].title", equalTo("A New Hope"));
-					
+		//Read my properties
+		Properties prop = new Properties();
+		try {
+			prop.load(GraphQLQueryTest.class.getClassLoader().getResourceAsStream("myproject.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String env = prop.getProperty("env");
+		String url = prop.getProperty(env.toUpperCase()+"URL");
+
+		System.out.println("url is "+url);
+
 	}
 }
