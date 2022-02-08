@@ -14,6 +14,7 @@ import io.restassured.http.ContentType;
  * @author naveenautomationlabs
  *
  */
+
 public class GraphQLQueryTest {
 	
 	@Test
@@ -35,8 +36,4 @@ public class GraphQLQueryTest {
 										.body("data.allFilms.films[0].title", equalTo("A New Hope"));
 					
 	}
-
-
-
-
 }
