@@ -8,6 +8,38 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    
+concurrency: e2e-test
+
+on:
+
+  workflow_run:
+
+    workflows: []
+
+    types:
+
+      - completed
+
+  workflow_dispatch:
+
+    inputs:
+
+      env:
+
+        description: 'environment'
+
+        required: true
+
+        type: choice
+
+        default: 'QA'
+
+        options:
+
+          - QA
+
+          - PROD
 
 jobs:
   build:
