@@ -5,11 +5,17 @@ name: e2eTest
 
 on:
   push:
-  pull_request:
-  workflow_dispatch: 
-    inputs: 
-        msg:
-          description: dispatched
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'environment'
+        required: true
+        type: choice
+        default: 'PROD'
+        options:
+          - QA
+          - STG
+          - PROD
     
 jobs:
   build:
@@ -25,4 +31,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -Denv=QA clean install
+      run: mvn -Denv=${env.environment} clean install
