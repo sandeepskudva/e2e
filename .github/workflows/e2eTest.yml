@@ -6,6 +6,10 @@ name: e2eTest
 on:
   push:
   pull_request:
+  workflow_dispatch: 
+    inputs: 
+        msg:
+          description: dispatched
     
 jobs:
   build:
