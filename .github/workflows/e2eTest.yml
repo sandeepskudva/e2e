@@ -31,4 +31,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -Denv=${env.environment} clean install
+      run: mvn -Denv=${{ github.event.inputs.env }} clean install
