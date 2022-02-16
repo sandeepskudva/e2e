@@ -3,9 +3,6 @@
 
 name: e2eTest
 
-
-  
-
 on:
   push:
   workflow_dispatch:
@@ -20,15 +17,15 @@ on:
           - STG
           - PROD
           
-      
-       
-    
 jobs:
   build:
 
     runs-on: ubuntu-latest
     env:
-      default: 'PROD'
+        description: 'environment'
+        required: true
+        type: choice
+        default: 'PROD'
               
 
     steps:
