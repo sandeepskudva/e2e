@@ -30,10 +30,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: check event
-      run: echo $env.GITHUB_EVENT_NAME     
+      run: echo $GITHUB_EVENT_NAME     
     - name: Run for push
-      if: ${{ env.GITHUB_EVENT_NAME == 'push' }}
+      if: ${{ GITHUB_EVENT_NAME == 'push' }}
       run: mvn -Denv=QA clean install
     - name: Run for workflow
-      if: ${{ env.GITHUB_EVENT_NAME == 'workflow_dispatch' }}
+      if: ${{ GITHUB_EVENT_NAME == 'workflow_dispatch' }}
       run: mvn -Denv=${{ github.event.inputs.env }} clean install
