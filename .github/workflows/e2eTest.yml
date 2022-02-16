@@ -5,7 +5,7 @@ name: e2eTest
 
 defaults:
    run: |
-         inputs: '{ "env": "STG"}'  >> $GITHUB_ENV
+         ${{ github.event.inputs.env }} = 'STG'
   
 
 on:
