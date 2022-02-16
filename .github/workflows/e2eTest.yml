@@ -5,7 +5,7 @@ name: e2eTest
 
 defaults:
    run: |
-         echo "env=QA" >> $GITHUB_ENV
+         echo "{QA}" >> $GITHUB_ENV
   
 
 on:
