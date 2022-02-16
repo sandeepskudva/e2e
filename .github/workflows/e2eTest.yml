@@ -3,13 +3,12 @@
 
 name: e2eTest
 
-defaults:
-   run: |
-         ${{ github.event.inputs.env }} = 'STG'
+
   
 
 on:
-  push:
+  
+  
   workflow_dispatch:
     inputs:
       env:
@@ -21,11 +20,17 @@ on:
           - QA
           - STG
           - PROD
+          
+      push:
+       
     
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      default: 'PROD'
+              
 
     steps:
     - uses: actions/checkout@v2
