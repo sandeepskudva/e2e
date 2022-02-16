@@ -5,7 +5,7 @@ name: e2eTest
 
 defaults:
    run: |
-         inputs: '{ "env": "STG"}'
+         inputs: '{ "env": "STG"}'  >> $GITHUB_ENV
   
 
 on:
