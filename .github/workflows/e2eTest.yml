@@ -7,8 +7,7 @@ name: e2eTest
   
 
 on:
-  
-  
+  push:
   workflow_dispatch:
     inputs:
       env:
@@ -21,7 +20,7 @@ on:
           - STG
           - PROD
           
-      push:
+      
        
     
 jobs:
