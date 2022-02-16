@@ -29,8 +29,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: |
-            mvn -Denv=${{ github.event.inputs.env }} clean install
-            env
-      
+    - name: Run for push
+      if: ${{ env.GITHUB_EVENT_NAME== 'push' }}
+      run: mvn -Denv=QA clean install
+    - name: Run for workflow
+      if: ${{ env.GITHUB_EVENT_NAME== 'workflow_dispatch' }}
+      run: mvn -Denv=${{ github.event.inputs.env }} clean install
